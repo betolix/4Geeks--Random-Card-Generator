@@ -7,17 +7,48 @@ import "./assets/img/4geeks.ico";
 
 window.onload = function() {
   //write your code here
+  const numbers = [
+    "A",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "J",
+    "Q",
+    "K"
+  ];
 
-  let pronoun = ["the", "our"];
-  let adj = ["great", "big"];
-  let noun = ["jogger", "racoon"];
+  const suits = ["&spades;", "&clubs;", "&hearts;", "&diams;"];
 
-  let posPron = Math.floor(Math.random() * pronoun.length);
-  let posAdj = Math.floor(Math.random() * pronoun.length);
-  let posNoun = Math.floor(Math.random() * pronoun.length);
+  let newNumber = document.querySelector(".number");
 
-  let domain = pronoun[posPron] + adj[posAdj] + noun[posNoun] + ".com";
+  let newSuitA = document.querySelector(".suitA");
+  let newSuitB = document.querySelector(".suitB");
 
-  console.log(domain);
-  console.log("Hello Rigo from the console!");
+  function randomCard(arr) {
+    return Math.floor(Math.random() * arr.length);
+  }
+
+  function card() {
+    let number = numbers[randomCard(numbers)];
+    let suit = suits[randomCard(suits)];
+
+    newNumber.innerHTML = number;
+    newSuitA.innerHTML = suit;
+    newSuitB.innerHTML = suit;
+
+    if (suit == "&hearts;" || suit == "&diams;") {
+      newSuitA.style.color = "red";
+      newSuitB.style.color = "red";
+      newNumber.style.color = "red";
+    }
+  }
+
+  //
+  card();
 };
